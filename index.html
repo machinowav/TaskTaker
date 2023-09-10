@@ -74,6 +74,13 @@ button:hover{
     color: #141212;
 }
 
+.tasks p {
+    text-align: center;
+    font-size: 14px;
+    opacity: 50%;
+    user-select: none;
+}
+
 #clearButton{
     border: none;
     outline: none;
@@ -146,7 +153,8 @@ ul li span:hover{
                 <button onclick="addTask()">Add</button>
             </div>
             <ul id="listContainer"></ul>
-            <div class="cleartasks">
+            <div class="tasks">
+            <p id="notask">No tasks in here</p>
             <button id="clearButton" onclick="clearTasks()">Clear Tasks</button>
             </div>
 
@@ -157,6 +165,7 @@ ul li span:hover{
         const inputBox = document.getElementById("inputBox");
         const listContainer = document.getElementById("listContainer");
         const clearButton = document.getElementById("clearButton");
+        const p = document.getElementById("notask");
 
 function addTask(){
     if (inputBox.value === '') {
@@ -181,8 +190,10 @@ function clearTasks(){
 function updateClearButtonVisibility(){
 if (listContainer.children.length > 0){
         clearButton.style.display = "block";
+        p.style.display = "none";
     } else {
         clearButton.style.display = "none";
+        p.style.display = "block";
     }
 }
 listContainer.addEventListener("click", function(e){
